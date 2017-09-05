@@ -1,0 +1,15 @@
+
+
+
+all: jshn
+
+jshn:
+	gcc -o jshn -I /usr/include/json-c -DJSONC jshn.c -ljson-c blob.c blobmsg.c blobmsg_json.c avl.c 
+
+
+clean:
+	rm -f jshn
+
+install: jshn sh/jshn.sh
+	install sh/jshn.sh $(DESTDIR)/usr/local/bin
+	install jshn $(DESTDIR)/usr/local/bin
